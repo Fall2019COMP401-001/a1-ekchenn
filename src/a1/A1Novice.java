@@ -26,8 +26,8 @@ public class A1Novice {
 			
 				amt_spent = amt_spent + (item_quantity * item_price);
 			}
-
-			System.out.println(first_name.charAt(0) + ". " + last_name + ": " + amt_spent);
+			String amt_spent_2 = String.format("%.02f" , amt_spent);
+			System.out.println(first_name.charAt(0) + ". " + last_name + ": " + amt_spent_2);
 	
 		}
 		scan.close();

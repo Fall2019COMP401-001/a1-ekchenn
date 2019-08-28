@@ -10,21 +10,26 @@ public class A1Novice {
 		
 
 		int total_cust = scan.nextInt();
-		String first_name = scan.nextLine();
-		String last_name = scan.nextLine();
-		int total_items = scan.nextInt();
-		
-		double amt_spent = 0.0;
-				
-		for (int i = 0; i < total_items; i++) 
+		for (int i = 0; i < total_cust; i++)
 		{
-			int item_quantity = scan.nextInt();
-			String item_name = scan.nextLine();
-			double item_price = scan.nextDouble();
-			
-			amt_spent = amt_spent + (item_quantity * item_price);
-		}
+			String first_name = scan.next();
+			String last_name = scan.next();
+			int total_items = scan.nextInt();
 		
-		System.out.println(first_name.charAt(0) + ". " + last_name + ": " + amt_spent);
+			double amt_spent = 0.0;
+				
+			for (int j = 0; j < total_items; j++) 
+			{
+				int item_quantity = scan.nextInt();
+				String item_name = scan.next();
+				double item_price = scan.nextDouble();
+			
+				amt_spent = amt_spent + (item_quantity * item_price);
+			}
+
+			System.out.println(first_name.charAt(0) + ". " + last_name + ": " + amt_spent);
+	
+		}
+		scan.close();
 	}
 }

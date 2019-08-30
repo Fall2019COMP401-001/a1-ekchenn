@@ -8,12 +8,12 @@ public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		//Initial declarations of arrays of item + price + outputted counts
+		//Initial declarations of arrays
 		int store_count = scan.nextInt();
-		String[] item_name = new String[store_count];
-		double[] item_price = new double[store_count];
-		int[] total_item_count = new int[store_count];
-		int[] cust_per_item = new int[store_count];
+		String[] item_name = new String[store_count];   //initial store inventory array
+		double[] item_price = new double[store_count];  //initial store inventory array
+		int[] total_item_count = new int[store_count];  //final quantity of each item count
+		int[] cust_per_item = new int[store_count];     //final customers per item count
 		
 		for (int a = 0; a < store_count; a++) 
 		{
@@ -27,30 +27,46 @@ public static void main(String[] args) {
 		String[] first_name = new String[total_cust];
 		String[] last_name = new String[total_cust];
 		int[] cust_total_items = new int[total_cust];
+		boolean[] cust_bought = new boolean[store_count];
 		
-		//Finding amount spent per customer
+		//# customers loop
 		for (int i = 0; i < total_cust; i++)
 		{
 			first_name[i] = scan.next();
 			last_name[i] = scan.next();
 			cust_total_items[i] = scan.nextInt();
 			
-			 
+			//# items per customer loop
 			for (int j = 0; j < cust_total_items[i]; j++) 
 			{
-				int item_quantity = scan.nextInt();
-				String inputted_item_name = scan.next();
-				 
-				//Counting quantity of each item bought + quantity of customers that bought each item
+				int item_quantity = scan.nextInt();         //quantity in customer's list
+				String inputted_item_name = scan.next();    //item in customer's list
+				
+				//identifying item's place in array loop
 				for(int k = 0; k < item_name.length; k++)
 				{
+					
 					if(inputted_item_name.equals(item_name[k])) 
 					{
 						total_item_count[k] = total_item_count[k] + item_quantity;
-						cust_per_item[k]++;
-						break;
+						cust_bought[k] = true;
 					}
 				}
+			}
+			
+			//counting customers per item 
+			for(int l = 0; l < item_name.length; l++) 
+			{
+				if (cust_bought[l] == true) 
+				{
+					cust_per_item[l]++;
+				}
+			}
+			
+			//reset array
+			for (int pls = 0; pls < item_name.length; pls++) 
+			{
+				cust_bought[pls] = false;
 			}
 		}
 		
@@ -69,3 +85,6 @@ public static void main(String[] args) {
 		scan.close();	
 	}
 }
+
+
+
